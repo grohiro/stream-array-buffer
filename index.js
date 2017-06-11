@@ -25,7 +25,9 @@ const streamBuffer = function(options) {
   };
 
   transform._flush = function(callback) {
-    this.push(buffer);
+    if (buffer.length > 0) {
+      this.push(buffer);
+    }
     callback();
   };
 
